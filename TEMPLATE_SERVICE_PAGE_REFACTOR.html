@@ -1,0 +1,771 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Treatment Template - Mili Skin & Beauty">
+    <meta name="keywords" content="treatment, skin, beauty, London">
+    <meta property="og:title" content="Treatment - Mili Skin & Beauty">
+    <meta property="og:description" content="Professional treatment at Mili Skin & Beauty">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="./images/treatment.jpg">
+    
+    <title>Treatment Name - Mili Skin & Beauty</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="components.css">
+</head>
+<body>
+    
+    <!-- Header & Navigation -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="index.html#home" class="logo">
+                        <span class="logo-text">Mili Skin & Beauty</span>
+                    </a>
+                    
+                    <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    
+                    <ul class="nav-links">
+                        <li><a href="index.html#home" class="nav-link">Home</a></li>
+                        <li><a href="index.html#about" class="nav-link">About</a></li>
+                        <li><a href="index.html#services" class="nav-link">Services</a></li>
+                        <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                        <li><a href="faq.html" class="nav-link">FAQ</a></li>
+                        <li><a href="https://that-time.co.uk/mili-skinbeauty" target="_blank" rel="noopener noreferrer" class="nav-link book-btn">Book Now</a></li>
+                    </ul>
+
+                    <div class="nav-actions">
+                        <button class="search-toggle" aria-label="Open search" aria-expanded="false" aria-controls="nav-search-panel">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Premium Treatment Categories Navigation -->
+    <nav class="treatment-mega-nav">
+        <div class="container">
+            <div class="mega-nav-wrapper">
+                
+                <!-- Facials & Skincare Category -->
+                <div class="mega-category">
+                    <button class="mega-category-trigger" aria-expanded="false" aria-controls="facials-skincare-mega-menu">
+                        <div class="trigger-content">
+                            <i class="fas fa-hand-holding-droplet"></i>
+                            <span>Facials & Skincare</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="mega-menu" id="facials-skincare-mega-menu" aria-hidden="true">
+                        <div class="mega-menu-content">
+                            <div class="mega-menu-header">
+                                <h3>Facials & Skincare</h3>
+                                <p>Advanced facials for cleansing, rejuvenation, and skin transformation</p>
+                            </div>
+                            <div class="mega-menu-grid">
+                                <ul class="mega-menu-column">
+                                    <li class="column-title">Hydration & Glow</li>
+                                    <li><a href="treatments/skin-glow-hydrofacial.html">Skin Glow: Hydrofacial</a></li>
+                                    <li><a href="treatments/skin-glass-korean-facial.html">Skin Glass: Korean Facial</a></li>
+                                    <li><a href="treatments/skin-oxyglow-oxygen-facial.html">Skin Oxyglow: OxygenO Facial</a></li>
+                                </ul>
+                                <ul class="mega-menu-column">
+                                    <li class="column-title">Renewal & Peels</li>
+                                    <li><a href="treatments/skin-radiance-biorepeel.html">Skin Radiance: BioRePeel</a></li>
+                                    <li><a href="treatments/green-peel-bio-microneedling.html">Green Peel "“ BioMicroneedling</a></li>
+                                    <li><a href="chemical-peel.html">Skin Renewal: Chemical Peel</a></li>
+                                </ul>
+                                <ul class="mega-menu-column">
+                                    <li class="column-title">Advanced Tech</li>
+                                    <li><a href="treatments/skin-revive-microneedling-biorepeel.html">Skin Revive: Microneedling + BioRePeel</a></li>
+                                    <li><a href="treatments/skin-luma-lift-rf-facial.html">Skin LumaLift: Radio Frequency Facial</a></li>
+                                    <li><a href="treatments/skin-luxe-satin-ultimate-exfoliation.html">Skin Luxe Satin: Ultimate Exfoliation</a></li>
+                                </ul>
+                                <ul class="mega-menu-column">
+                                    <li class="column-title">Specialty</li>
+                                    <li><a href="treatments/skin-balance-bb-glow.html">Skin Balance: BB Glow</a></li>
+                                    <li><a href="treatments/deep-blackhead-extraction.html">Deep Blackhead Extraction</a></li>
+                                    <li class="mega-menu-cta"><a href="index.html#contact" class="btn btn-sm">Book Treatment</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HIFU Treatments Category -->
+                <div class="mega-category">
+                    <button class="mega-category-trigger" aria-expanded="false" aria-controls="hifu-treatments-mega-menu">
+                        <div class="trigger-content">
+                            <i class="fas fa-heart-pulse"></i>
+                            <span>HIFU Treatments</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="mega-menu" id="hifu-treatments-mega-menu" aria-hidden="true">
+                        <div class="mega-menu-content">
+                            <div class="mega-menu-header">
+                                <h3>HIFU Treatments</h3>
+                                <p>Non-invasive lifting and tightening for face, neck, and body</p>
+                            </div>
+                            <div class="mega-menu-grid">
+                                <ul class="mega-menu-column">
+                                    <li class="column-title">Face & Neck</li>
+                                    <li><a href="treatments/hifu-face.html">HIFU Face</a></li>
+                                    <li><a href="treatments/hifu-neck.html">HIFU Neck</a></li>
+                                    <li><a href="treatments/hifu-face-neck.html">HIFU Face and Neck</a></li>
+                                    <li><a href="treatments/hifu-jawline.html">HIFU Jawline Definition</a></li>
+                                </ul>
+                                <ul class="mega-menu-column">
+                                    <li class="column-title">Body Contouring</li>
+                                    <li><a href="treatments/hifu-butt-lift.html">HIFU Butt Lift</a></li>
+                                    <li><a href="treatments/hifu-breast-lift.html">HIFU Breast Lift</a></li>
+                                    <li><a href="treatments/hifu-stomach.html">HIFU Stomach Tightening</a></li>
+                                    <li><a href="treatments/hifu-love-handles.html">HIFU Love Handles</a></li>
+                                </ul>
+                                <ul class="mega-menu-column">
+                                    <li class="column-title">Legs & Arms</li>
+                                    <li><a href="treatments/hifu-inner-thighs.html">HIFU Inner Thighs</a></li>
+                                    <li><a href="treatments/hifu-outer-thighs.html">HIFU Outer Thighs</a></li>
+                                    <li><a href="treatments/hifu-banana-rolls.html">HIFU Banana Rolls</a></li>
+                                    <li><a href="treatments/hifu-arms.html">HIFU Arms</a></li>
+                                </ul>
+                                <ul class="mega-menu-column">
+                                    <li class="column-title">Bundles</li>
+                                    <li><a href="treatments/hifu-stomach-love-handles.html">Stomach + Love Handles</a></li>
+                                    <li><a href="treatments/hifu-face.html">Popular: Full Face</a></li>
+                                    <li class="mega-menu-cta"><a href="index.html#contact" class="btn btn-sm">Book Consultation</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Microneedling RF Category -->
+                <div class="mega-category">
+                    <button class="mega-category-trigger" aria-expanded="false" aria-controls="microneedling-rf-mega-menu">
+                        <div class="trigger-content">
+                            <i class="fas fa-syringe"></i>
+                            <span>Microneedling RF</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="mega-menu" id="microneedling-rf-mega-menu" aria-hidden="true">
+                        <div class="mega-menu-content">
+                            <div class="mega-menu-header">
+                                <h3>Microneedling RF</h3>
+                                <p>Collagen-stimulating microneedling, RF, and resurfacing treatments</p>
+                            </div>
+                            <div class="mega-menu-grid">
+                                <ul class="mega-menu-column">
+                                    <li class="column-title">Microneedling & RF</li>
+                                    <li><a href="treatments/skin-revive-microneedling-biorepeel.html">Microneedling + BioRePeel</a></li>
+                                    <li><a href="treatments/green-peel-bio-microneedling.html">Green Peel "“ BioMicroneedling</a></li>
+                                    <li><a href="treatments/skin-luma-lift-rf-facial.html">Radio Frequency Facial</a></li>
+                                </ul>
+                                <ul class="mega-menu-column">
+                                    <li class="column-title">Resurfacing & Peels</li>
+                                    <li><a href="treatments/skin-luxe-satin-ultimate-exfoliation.html">Ultimate Exfoliation</a></li>
+                                    <li><a href="chemical-peel.html">Chemical Peel</a></li>
+                                    <li><a href="treatments/skin-radiance-biorepeel.html">BioRePeel</a></li>
+                                </ul>
+                                <ul class="mega-menu-column">
+                                    <li class="column-title">Targeted Care</li>
+                                    <li><a href="treatments/skin-oxyglow-oxygen-facial.html">OxygenO Facial</a></li>
+                                    <li><a href="treatments/skin-glass-korean-facial.html">Korean Facial</a></li>
+                                    <li><a href="treatments/skin-glow-hydrofacial.html">Hydrofacial</a></li>
+                                </ul>
+                                <ul class="mega-menu-column">
+                                    <li class="mega-menu-cta"><a href="index.html#contact" class="btn btn-sm">Book Treatment</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Body Treatments Category -->
+                <div class="mega-category">
+                    <button class="mega-category-trigger" aria-expanded="false" aria-controls="body-treatments-mega-menu">
+                        <div class="trigger-content">
+                            <i class="fas fa-spa"></i>
+                            <span>Body Treatments</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="mega-menu" id="body-treatments-mega-menu" aria-hidden="true">
+                        <div class="mega-menu-content">
+                            <div class="mega-menu-header">
+                                <h3>Body Treatments</h3>
+                                <p>Targeted treatments for body contouring and lifting</p>
+                            </div>
+                            <div class="mega-menu-grid">
+                                <ul class="mega-menu-column">
+                                    <li class="column-title">Body Lifting</li>
+                                    <li><a href="treatments/hifu-butt-lift.html">HIFU Butt Lift</a></li>
+                                    <li><a href="treatments/hifu-breast-lift.html">HIFU Breast Lift</a></li>
+                                </ul>
+                                <ul class="mega-menu-column">
+                                    <li class="column-title">Abdomen & Waist</li>
+                                    <li><a href="treatments/hifu-stomach.html">HIFU Stomach Tightening</a></li>
+                                    <li><a href="treatments/hifu-love-handles.html">HIFU Love Handles</a></li>
+                                    <li><a href="treatments/hifu-stomach-love-handles.html">Stomach + Love Handles</a></li>
+                                </ul>
+                                <ul class="mega-menu-column">
+                                    <li class="column-title">Legs & Arms</li>
+                                    <li><a href="treatments/hifu-inner-thighs.html">HIFU Inner Thighs</a></li>
+                                    <li><a href="treatments/hifu-outer-thighs.html">HIFU Outer Thighs</a></li>
+                                    <li><a href="treatments/hifu-banana-rolls.html">HIFU Banana Rolls</a></li>
+                                    <li><a href="treatments/hifu-arms.html">HIFU Arms</a></li>
+                                </ul>
+                                <ul class="mega-menu-column">
+                                    <li class="mega-menu-cta"><a href="index.html#contact" class="btn btn-sm">Book Now</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Beauty Treatments Category -->
+                <div class="mega-category">
+                    <button class="mega-category-trigger" aria-expanded="false" aria-controls="beauty-treatments-mega-menu">
+                        <div class="trigger-content">
+                            <i class="fas fa-wand-magic-sparkles"></i>
+                            <span>Beauty Treatments</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="mega-menu" id="beauty-treatments-mega-menu" aria-hidden="true">
+                        <div class="mega-menu-content">
+                            <div class="mega-menu-header">
+                                <h3>Beauty Treatments</h3>
+                                <p>Specialized beauty and wellness services</p>
+                            </div>
+                            <div class="mega-menu-grid">
+                                <ul class="mega-menu-column">
+                                    <li class="column-title">Facial Treatments</li>
+                                    <li><a href="treatments/skin-glow-hydrofacial.html">Hydrofacial</a></li>
+                                    <li><a href="treatments/skin-glass-korean-facial.html">Korean Facial</a></li>
+                                    <li><a href="treatments/skin-oxyglow-oxygen-facial.html">OxygenO Facial</a></li>
+                                    <li><a href="treatments/skin-radiance-biorepeel.html">BioRePeel</a></li>
+                                </ul>
+                                <ul class="mega-menu-column">
+                                    <li class="column-title">Advanced Services</li>
+                                    <li><a href="treatments/skin-revive-microneedling-biorepeel.html">Microneedling + BioRePeel</a></li>
+                                    <li><a href="treatments/skin-luma-lift-rf-facial.html">Radio Frequency Facial</a></li>
+                                    <li><a href="treatments/skin-luxe-satin-ultimate-exfoliation.html">Ultimate Exfoliation</a></li>
+                                    <li><a href="treatments/green-peel-bio-microneedling.html">BioMicroneedling</a></li>
+                                </ul>
+                                <ul class="mega-menu-column">
+                                    <li class="column-title">Specialty</li>
+                                    <li><a href="treatments/skin-balance-bb-glow.html">BB Glow</a></li>
+                                    <li><a href="treatments/deep-blackhead-extraction.html">Blackhead Extraction</a></li>
+                                    <li><a href="chemical-peel.html">Chemical Peel</a></li>
+                                </ul>
+                                <ul class="mega-menu-column">
+                                    <li class="mega-menu-cta"><a href="index.html#contact" class="btn btn-sm">Book Consultation</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================================
+         SECTION 1: HERO
+         ============================================ -->
+    <section class="treatment-hero" style="background-image: url('./images/treatment-hero.jpg');">
+        <div class="treatment-container">
+            <h1>Treatment Name</h1>
+            <p class="tagline">Short benefit statement or tagline here</p>
+            
+            <div class="hero-cta-buttons">
+                <a href="#pricing" class="btn btn-primary">Book Now</a>
+                <a href="#benefits" class="btn btn-secondary">See Benefits</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         STICKY SUBNAV (Tabs/Anchors)
+         ============================================ -->
+    <nav class="sticky-subnav">
+        <div class="subnav-container">
+            <ul class="subnav-list">
+                <li class="subnav-item"><a href="#section-about" class="subnav-link active">About</a></li>
+                <li class="subnav-item"><a href="#section-benefits" class="subnav-link">Benefits</a></li>
+                <li class="subnav-item"><a href="#section-results" class="subnav-link">Results</a></li>
+                <li class="subnav-item"><a href="#section-steps" class="subnav-link">How It Works</a></li>
+                <li class="subnav-item"><a href="#section-pricing" class="subnav-link">Pricing</a></li>
+                <li class="subnav-item"><a href="#section-faqs" class="subnav-link">FAQs</a></li>
+                <li class="subnav-item"><a href="#section-related" class="subnav-link">Related</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ============================================
+         SECTION 2: ABOUT THE SERVICE
+         ============================================ -->
+    <section id="section-about" class="treatment-section">
+        <div class="treatment-container">
+            <div class="about-layout">
+                <div class="about-content">
+                    <h3>About This Treatment</h3>
+                    <p>First paragraph describing what the treatment is, how it works, and its key benefits.</p>
+                    <p>Second paragraph with additional details about technology, methodology, or differentiators.</p>
+                    <p>Third paragraph about suitability, skin types, or any special considerations.</p>
+                </div>
+                
+                <div class="about-features">
+                    <h3>Key Benefits</h3>
+                    <div class="about-badges">
+                        <div class="badge">No Downtime</div>
+                        <div class="badge">All Skin Types</div>
+                        <div class="badge">Instant Results</div>
+                        <div class="badge">Long Lasting</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Inline Gallery (3 images) -->
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="./images/treatment-1.jpg" alt="Treatment demonstration">
+                </div>
+                <div class="gallery-item">
+                    <img src="./images/treatment-2.jpg" alt="Treatment facility">
+                </div>
+                <div class="gallery-item">
+                    <img src="./images/treatment-3.jpg" alt="Treatment result">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 3: BENEFITS GRID
+         ============================================ -->
+    <section id="section-benefits" class="treatment-section" style="background: var(--neutral-surface);">
+        <div class="treatment-container">
+            <div class="section-header">
+                <h2>Benefits of This Treatment</h2>
+                <p>Discover what makes this treatment special</p>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="icon"><i class="fas fa-sparkles"></i></div>
+                    <h4>Improved Skin Texture</h4>
+                    <p>Smooth, refined complexion with visible improvement in skin quality.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="icon"><i class="fas fa-star"></i></div>
+                    <h4>Enhanced Radiance</h4>
+                    <p>Bright, glowing skin that looks refreshed and rejuvenated.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="icon"><i class="fas fa-shield-alt"></i></div>
+                    <h4>Protective Care</h4>
+                    <p>Nourishing ingredients that protect and strengthen skin barrier.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="icon"><i class="fas fa-clock"></i></div>
+                    <h4>Long-Lasting Effects</h4>
+                    <p>Results that improve over time and can be maintained with follow-ups.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 4: RESULTS (Before/After Carousel)
+         ============================================ -->
+    <section id="section-results" class="treatment-section">
+        <div class="treatment-container">
+            <div class="section-header">
+                <h2>Real Results</h2>
+                <p>See the transformation for yourself</p>
+            </div>
+
+            <div class="results-carousel">
+                <div class="carousel-container">
+                    <div class="carousel-slide active">
+                        <img src="./images/before-after-1.jpg" alt="Client result 1">
+                        <div class="carousel-content">
+                            <p>Client 1: Professional result with visible skin improvement and radiance</p>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <img src="./images/before-after-2.jpg" alt="Client result 2">
+                        <div class="carousel-content">
+                            <p>Client 2: Enhanced complexion with refined texture and brightness</p>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <img src="./images/before-after-3.jpg" alt="Client result 3">
+                        <div class="carousel-content">
+                            <p>Client 3: Glowing skin with improved tone and elasticity</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-controls">
+                    <button class="carousel-button" data-carousel-prev aria-label="Previous result">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="carousel-dots">
+                        <div class="dot active"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <button class="carousel-button" data-carousel-next aria-label="Next result">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 5: STEP-BY-STEP (Accordion)
+         ============================================ -->
+    <section id="section-steps" class="treatment-section" style="background: var(--neutral-surface);">
+        <div class="treatment-container">
+            <div class="section-header">
+                <h2>How the Treatment Works</h2>
+                <p>Step-by-step breakdown of your treatment journey</p>
+            </div>
+
+            <div class="accordion steps-accordion">
+                <div class="accordion-item open">
+                    <div class="accordion-header">
+                        <h4>1. Consultation & Assessment</h4>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>We begin with a thorough consultation where we understand your skin type, concerns, and desired outcomes. Our specialists assess your skin condition and recommend the best approach for optimal results.</p>
+                            <p><strong>Duration:</strong> 15-20 minutes</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h4>2. Pre-Treatment Preparation</h4>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Your skin is gently cleansed and prepared. We apply any necessary protective products or numbing agents (if required) to ensure your comfort throughout the treatment.</p>
+                            <p><strong>Duration:</strong> 5-10 minutes</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h4>3. Treatment Application</h4>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>The specialist applies the treatment using specialized equipment or techniques. You may experience sensations such as warmth, gentle pulsing, or light suction depending on the treatment type.</p>
+                            <p><strong>Duration:</strong> 30-45 minutes (varies by treatment)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h4>4. Aftercare & Follow-Up Guidance</h4>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>We provide comprehensive aftercare instructions including skincare recommendations, sun protection guidelines, and any specific do's and don'ts to maximize your results.</p>
+                            <ul>
+                                <li>Avoid direct sunlight for 24-48 hours</li>
+                                <li>Use gentle, fragrance-free skincare</li>
+                                <li>Stay hydrated</li>
+                                <li>Avoid strenuous exercise for 24 hours</li>
+                            </ul>
+                            <p><strong>Follow-up:</strong> We'll check in with you after 24-48 hours</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 6: PRICING & CONTACT
+         ============================================ -->
+    <section id="section-pricing" class="treatment-section">
+        <div class="treatment-container">
+            <h2>Pricing & Enquiry</h2>
+            
+            <div class="pricing-layout">
+                <!-- Pricing Column -->
+                <div>
+                    <h3>Investment</h3>
+                    <div class="pricing-list">
+                        <div class="pricing-item">
+                            <div class="pricing-info">
+                                <h4>Single Session</h4>
+                                <p>Complete treatment</p>
+                            </div>
+                            <div class="pricing-price">£99</div>
+                        </div>
+
+                        <div class="pricing-item">
+                            <div class="pricing-info">
+                                <h4>3-Pack Course</h4>
+                                <p>Best for results</p>
+                            </div>
+                            <div class="pricing-price">£249</div>
+                        </div>
+
+                        <div class="pricing-item">
+                            <div class="pricing-info">
+                                <h4>6-Pack Course</h4>
+                                <p>Maximum benefits</p>
+                            </div>
+                            <div class="pricing-price">£459</div>
+                        </div>
+
+                        <div class="pricing-item">
+                            <div class="pricing-info">
+                                <h4>Add-on Booster</h4>
+                                <p>Enhancement layer</p>
+                            </div>
+                            <div class="pricing-price">£49</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Enquiry Form Column -->
+                <div>
+                    <h3>Get in Touch</h3>
+                    <form class="enquiry-form" action="contact.php" method="POST">
+                        <input type="hidden" name="treatment" value="Treatment Name">
+
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="interested">Interested in *</label>
+                            <select id="interested" name="interested" required>
+                                <option value="">Select option</option>
+                                <option value="Single Session">Single Session</option>
+                                <option value="3-Pack Course">3-Pack Course</option>
+                                <option value="6-Pack Course">6-Pack Course</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message or Questions</label>
+                            <textarea id="message" name="message" placeholder="Any specific questions or concerns?"></textarea>
+                        </div>
+
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="consent" name="consent" required>
+                            <label for="consent">I consent to being contacted about my enquiry *</label>
+                        </div>
+
+                        <button type="submit" class="form-submit">Send Enquiry</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 7: FAQs (Accordion)
+         ============================================ -->
+    <section id="section-faqs" class="treatment-section" style="background: var(--neutral-surface);">
+        <div class="treatment-container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Everything you need to know about this treatment</p>
+            </div>
+
+            <div class="accordion faqs-accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h4>Is the treatment painful?</h4>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>No, the treatment is generally painless. Most clients describe it as comfortable and relaxing. Some may experience mild sensations such as gentle warmth or light pressure, but this is not uncomfortable.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h4>How long does the treatment take?</h4>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>The treatment typically takes 45-60 minutes including consultation and aftercare instructions. This may vary slightly depending on specific needs.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h4>When will I see results?</h4>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Some results are visible immediately after the treatment, with skin appearing refreshed and glowing. However, optimal results typically develop over the next 2-4 weeks as the skin continues to regenerate and improve.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h4>Is there any downtime?</h4>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>This treatment requires no downtime. You can return to your normal activities immediately. We recommend avoiding intense exercise and direct sunlight for 24 hours to maximize results.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h4>How long do the results last?</h4>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Results typically last 4-6 weeks. Most clients opt for maintenance treatments every 4-6 weeks to sustain their beautiful results. Some benefits may be cumulative with repeated treatments.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h4>Is it suitable for all skin types?</h4>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <p>Yes, this treatment is suitable for all skin types including sensitive skin. However, we always conduct a thorough consultation to ensure the best approach for your specific skin condition.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 8: RELATED TREATMENTS
+         ============================================ -->
+    <section id="section-related" class="treatment-section">
+        <div class="treatment-container">
+            <div class="section-header">
+                <h2>Complementary Treatments</h2>
+                <p>Explore other treatments that work well with this service</p>
+            </div>
+
+            <div class="related-cards-grid">
+                <div class="related-card">
+                    <div class="related-card-image">
+                        <img src="./images/related-1.jpg" alt="Related treatment">
+                    </div>
+                    <div class="related-card-content">
+                        <h4 class="related-card-title">Treatment Name 1</h4>
+                        <p class="related-card-desc">Brief description of this complementary treatment and how it pairs with the main service.</p>
+                        <div class="related-card-meta">
+                            <span>45 mins</span>
+                            <span class="related-card-price">From £89</span>
+                        </div>
+                        <a href="related-treatment-1.html" class="related-card-cta">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="related-card">
+                    <div class="related-card-image">
+                        <img src="./images/related-2.jpg" alt="Related treatment">
+                    </div>
+                    <div class="related-card-content">
+                        <h4 class="related-card-title">Treatment Name 2</h4>
+                        <p class="related-card-desc">Another popular treatment that works beautifully as an add-on or standalone service.</p>
+                        <div class="related-card-meta">
+                            <span>60 mins</span>
+                            <span class="related-card-price">From £125</span>
+                        </div>
+                        <a href="related-treatment-2.html" class="related-card-cta">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="related-card">
+                    <div class="related-card-image">
+                        <img src="./images/related-3.jpg" alt="Related treatment">
+                    </div>
+                    <div class="related-card-content">
+                        <h4 class="related-card-title">Treatment Name 3</h4>
+                        <p class="related-card-desc">Advanced treatment option for clients seeking enhanced or more intensive results.</p>
+                        <div class="related-card-meta">
+                            <span>90 mins</span>
+                            <span class="related-card-price">From £199</span>
+                        </div>
+                        <a href="related-treatment-3.html" class="related-card-cta">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (reuse from index.html) -->
+    <footer class="footer">
+        <!-- [Include footer from index.html] -->
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script src="treatment-components.js"></script>
+</body>
+</html>
+
+

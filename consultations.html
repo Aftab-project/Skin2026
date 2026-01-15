@@ -1,0 +1,382 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Consultations and reviews at Mili Skin & Beauty, London.">
+    <title>Consultations - Mili Skin & Beauty</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="components.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="index.html#home" class="logo"><span class="logo-text">Mili Skin & Beauty</span></a>
+                    <button class="mobile-menu-toggle" aria-label="Toggle Menu"><span></span><span></span><span></span></button>
+                    <ul class="nav-links">
+                        <li><a href="index.html#home" class="nav-link">Home</a></li>
+                        <li><a href="index.html#about" class="nav-link">About</a></li>
+                        <li><a href="index.html#services" class="nav-link">Services</a></li>
+                        <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                        <li><a href="faq.html" class="nav-link">FAQ</a></li>
+                        <li><a href="https://that-time.co.uk/mili-skinbeauty?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnZ9cVMm8sVP1PbEOns6vHTNH4pIVHK2r3EvSXSSfYQ98St3SXALtqz_2pnMc_aem_4CjiiW2oSvME-ZtuJwZszA" target="_blank" rel="noopener noreferrer" class="nav-link book-btn">Book Now</a></li>
+                    </ul>
+                    <div class="nav-actions">
+                        <button class="search-toggle" aria-label="Open search" aria-expanded="false" aria-controls="nav-search-panel">
+                            <i class="fas fa-search"></i>
+                        </button>
+                        <div class="nav-search-panel" id="nav-search-panel" aria-hidden="true">
+                            <div class="search-header">
+                                <div class="search-row">
+                                    <input type="search" id="nav-search-input" placeholder="Search treatments…" aria-label="Search">
+                                    <button class="nav-search-clear" aria-label="Clear search"><i class="fas fa-times"></i></button>
+                                </div>
+                            </div>
+                            <div class="nav-search-suggestions" id="nav-search-suggestions"></div>
+                        </div>
+                        <div class="nav-search-backdrop" aria-hidden="true"></div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ============================================
+         SECTION 1: HERO
+         ============================================ -->
+    <section class="treatment-hero">
+        <div class="treatment-container">
+            <h1>Professional Consultations</h1>
+            <p class="tagline">Expert guidance to understand your goals and plan your journey</p>
+            
+            <div class="hero-cta-buttons">
+                <a href="#section-pricing" class="btn btn-primary">Book Now</a>
+                <a href="#section-about" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         STICKY SUBNAV (Tabs/Anchors)
+         ============================================ -->
+    <nav class="sticky-subnav">
+        <div class="subnav-container">
+            <ul class="subnav-list">
+                <li class="subnav-item"><a href="#section-about" class="subnav-link active">About</a></li>
+                <li class="subnav-item"><a href="#section-benefits" class="subnav-link">Benefits</a></li>
+                <li class="subnav-item"><a href="#section-steps" class="subnav-link">How It Works</a></li>
+                <li class="subnav-item"><a href="#section-pricing" class="subnav-link">Pricing</a></li>
+                <li class="subnav-item"><a href="#section-faqs" class="subnav-link">FAQs</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ============================================
+         SECTION 2: ABOUT THE SERVICE
+         ============================================ -->
+    <section id="section-about" class="treatment-section">
+        <div class="treatment-container">
+            <div class="about-layout">
+                <div class="about-content">
+                    <h3>About Consultations</h3>
+                    <p>Our professional consultations are designed to help you make informed decisions about your skincare and aesthetic treatment journey. Whether you're considering your first treatment or planning a comprehensive program, our experts provide personalized guidance tailored to your unique goals and concerns.</p>
+                    <p>We believe that the right consultation sets the foundation for outstanding results. Our clinicians take time to understand your skin, discuss realistic outcomes, and create a customized treatment plan that works for you.</p>
+                    <p>From skin analysis to treatment recommendations, we provide honest, expert advice to help you achieve your best skin.</p>
+                </div>
+                
+                <div class="about-features">
+                    <h3>Consultation Options</h3>
+                    <div class="about-badges">
+                        <div class="badge">In-Clinic</div>
+                        <div class="badge">Phone</div>
+                        <div class="badge">Expert Analysis</div>
+                        <div class="badge">Personalised Plans</div>
+                        <div class="badge">Redeemable Fees</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 3: BENEFITS GRID
+         ============================================ -->
+    <section id="section-benefits" class="treatment-section" style="background: var(--neutral-surface);">
+        <div class="treatment-container">
+            <div class="section-header">
+                <h2>Why Choose Our Consultations</h2>
+                <p>Expert guidance and personalized care planning</p>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="icon"><i class="fas fa-user-md"></i></div>
+                    <h4>Expert Assessment</h4>
+                    <p>Comprehensive skin analysis and evaluation by experienced aesthetic professionals.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="icon"><i class="fas fa-map-signs"></i></div>
+                    <h4>Personalized Planning</h4>
+                    <p>Customized treatment plans designed specifically for your goals and skin type.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="icon"><i class="fas fa-pound-sign"></i></div>
+                    <h4>Fee Redeemable</h4>
+                    <p>Consultation fees apply towards treatment costs when you book your plan.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="icon"><i class="fas fa-phone"></i></div>
+                    <h4>Flexible Options</h4>
+                    <p>Choose in-clinic or phone consultations based on your preference and availability.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="icon"><i class="fas fa-history"></i></div>
+                    <h4>Follow-Up Support</h4>
+                    <p>Continuous support and review sessions to track your results and progress.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="icon"><i class="fas fa-check-circle"></i></div>
+                    <h4>Realistic Expectations</h4>
+                    <p>Honest assessment of what treatments can achieve and realistic timeline expectations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 4: HOW IT WORKS
+         ============================================ -->
+    <section id="section-steps" class="treatment-section">
+        <div class="treatment-container">
+            <div class="section-header">
+                <h2>How Our Consultations Work</h2>
+                <p>A simple process to get you started</p>
+            </div>
+
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Book Your Appointment</h4>
+                        <p>Choose in-clinic or phone consultation and select your preferred date and time.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Initial Assessment</h4>
+                        <p>We review your goals, medical history, and conduct a thorough skin or area assessment.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Treatment Planning</h4>
+                        <p>Discuss options, pricing, timeline, and create a personalized treatment plan.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Follow-Up & Support</h4>
+                        <p>Book your treatments and receive ongoing support with progress reviews.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 5: PRICING
+         ============================================ -->
+    <section id="section-pricing" class="treatment-section" style="background: var(--neutral-surface);">
+        <div class="treatment-container">
+            <h2>Consultation Pricing</h2>
+            <div class="pricing-layout">
+                <div>
+                    <h3>Investment</h3>
+                    <div class="pricing-list">
+                        <div class="pricing-item">
+                            <div class="pricing-info">
+                                <h4>Skin Analysis</h4>
+                                <p>Initial skin evaluation</p>
+                            </div>
+                            <div class="pricing-price">Free</div>
+                            <a href="https://that-time.co.uk/mili-skinbeauty?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnZ9cVMm8sVP1PbEOns6vHTNH4pIVHK2r3EvSXSSfYQ98St3SXALtqz_2pnMc_aem_4CjiiW2oSvME-ZtuJwZszA" target="_blank" rel="noopener noreferrer" class="nav-link book-btn">Book Now</a>
+                        </div>
+
+                        <div class="pricing-item">
+                            <div class="pricing-info">
+                                <h4>In-Clinic Consultation</h4>
+                                <p>Comprehensive assessment</p>
+                            </div>
+                            <div class="pricing-price">£50</div>
+                            <a href="https://that-time.co.uk/mili-skinbeauty?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnZ9cVMm8sVP1PbEOns6vHTNH4pIVHK2r3EvSXSSfYQ98St3SXALtqz_2pnMc_aem_4CjiiW2oSvME-ZtuJwZszA" target="_blank" rel="noopener noreferrer" class="nav-link book-btn">Book Now</a>
+                        </div>
+
+                        <div class="pricing-item">
+                            <div class="pricing-info">
+                                <h4>Phone Consultation</h4>
+                                <p>Remote planning session</p>
+                            </div>
+                            <div class="pricing-price">£10</div>
+                            <a href="https://that-time.co.uk/mili-skinbeauty?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnZ9cVMm8sVP1PbEOns6vHTNH4pIVHK2r3EvSXSSfYQ98St3SXALtqz_2pnMc_aem_4CjiiW2oSvME-ZtuJwZszA" target="_blank" rel="noopener noreferrer" class="nav-link book-btn">Book Now</a>
+                        </div>
+
+                        <div class="pricing-item">
+                            <div class="pricing-info">
+                                <h4>Review / Top-Up</h4>
+                                <p>Progress review session</p>
+                            </div>
+                            <div class="pricing-price">£45</div>
+                            <a href="https://that-time.co.uk/mili-skinbeauty?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnZ9cVMm8sVP1PbEOns6vHTNH4pIVHK2r3EvSXSSfYQ98St3SXALtqz_2pnMc_aem_4CjiiW2oSvME-ZtuJwZszA" target="_blank" rel="noopener noreferrer" class="nav-link book-btn">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3>Get in Touch</h3>
+                    <form class="enquiry-form" action="contact.php" method="POST">
+                        <input type="hidden" name="treatment" value="Professional Consultation">
+
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Tell us about your goals *</label>
+                            <textarea id="message" name="message" rows="4" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Send Inquiry</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 6: FAQs
+         ============================================ -->
+    <section id="section-faqs" class="treatment-section">
+        <div class="treatment-container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Everything you need to know about consultations</p>
+            </div>
+
+            <div class="faqs-container">
+                <div class="faq-item">
+                    <h4 class="faq-question"><i class="fas fa-question-circle"></i> Is the skin analysis consultation really free?</h4>
+                    <p class="faq-answer">Yes, our initial skin analysis consultation is completely free. This allows us to understand your skin and discuss your goals without any financial commitment.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4 class="faq-question"><i class="fas fa-question-circle"></i> Can I apply my consultation fee towards treatment?</h4>
+                    <p class="faq-answer">Absolutely! Consultation fees are fully redeemable against the cost of any treatments you book based on our recommendations.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4 class="faq-question"><i class="fas fa-question-circle"></i> How long does a consultation take?</h4>
+                    <p class="faq-answer">Consultations typically take 20"“40 minutes, depending on the complexity of your concerns and the treatment plan needed.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4 class="faq-question"><i class="fas fa-question-circle"></i> What's included in the £50 in-clinic consultation?</h4>
+                    <p class="faq-answer">The in-clinic consultation includes a thorough skin assessment, discussion of your goals, personalized treatment recommendations, pricing details, and a customized treatment timeline.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4 class="faq-question"><i class="fas fa-question-circle"></i> Is a phone consultation as effective as in-clinic?</h4>
+                    <p class="faq-answer">Phone consultations are excellent for discussing your goals and treatment options. However, in-clinic consultations allow for hands-on skin assessment and are recommended for complex cases.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4 class="faq-question"><i class="fas fa-question-circle"></i> Do I need a consultation before every treatment?</h4>
+                    <p class="faq-answer">Your initial consultation includes a comprehensive plan. Follow-up reviews are recommended every 6"“12 months to assess progress and adjust your plan if needed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Get Started?</h2>
+            <p>Book your consultation today and discover your personalized treatment plan.</p>
+            <a href="#section-pricing" class="btn btn-primary">Book Your Consultation</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Mili Skin & Beauty</h3>
+                    <p>Your trusted partner for advanced skin care treatments in London.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/mili.skin.beauty" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="mailto:Militest@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="index.html#price-list">Price List</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-map-marker-alt"></i> <a href="https://www.google.com/maps/search/13b+Edinburgh+Cl,+London+E2+9NY" target="_blank" rel="noopener noreferrer">13b Edinburgh Cl, London E2 9NY</a></li>
+                        <li><i class="fas fa-phone"></i> 07346 001219</li>
+                        <li><i class="fas fa-envelope"></i> Militest@gmail.com</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Opening Hours</h4>
+                    <ul class="footer-hours">
+                        <li>Tue - Fri: 9:00 AM - 7:00 PM</li>
+                        <li>Saturday: 10:00 AM - 6:00 PM</li>
+                        <li>Sunday & Monday: Closed</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2025 Mili Skin & Beauty. All rights reserved.</p></div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+

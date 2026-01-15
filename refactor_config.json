@@ -1,0 +1,516 @@
+#!/usr/bin/env python3
+"""
+Treatment Page Refactoring Generator
+Converts all treatment pages to the new standardized layout
+"""
+
+import os
+import json
+from pathlib import Path
+
+# Treatment data configuration
+treatments = {
+    "korean-facial.html": {
+        "title": "Skin Glass: Korean Facial",
+        "tagline": "Multi-step Korean beauty ritual for luminous, glass-like skin",
+        "price": "£99",
+        "duration": "60 minutes",
+        "description": "The Korean Facial is a sophisticated multi-step treatment combining cleansing, essence infusion, sheet masks, and specialized massage techniques. This luxurious treatment delivers intense hydration and radiance.",
+        "about_paragraphs": [
+            "The Korean Facial is a sophisticated multi-step treatment that combines advanced K-beauty principles with professional-grade products. This comprehensive routine includes cleansing, exfoliation, essence layering, and specialized massage techniques.",
+            "Unlike traditional facials, Korean facials focus on intensive hydration, antioxidant protection, and achieving that coveted 'glass skin' appearance - smooth, dewy, and luminously radiant.",
+            "The treatment uses premium Korean skincare products rich in natural botanicals, snail mucin, and peptides to deliver transformative results with visible improvement in skin texture and glow."
+        ],
+        "benefits": [
+            {"icon": "fas fa-water", "title": "Intense Hydration", "desc": "Multi-layered hydration for plump, dewy skin"},
+            {"icon": "fas fa-sparkles", "title": "Glass Skin Effect", "desc": "Smooth, luminous, mirror-like complexion"},
+            {"icon": "fas fa-shield-alt", "title": "Antioxidant Protection", "desc": "Premium botanicals protect and strengthen skin"},
+            {"icon": "fas fa-sun", "title": "Brightening", "desc": "Enhanced luminosity and even skin tone"},
+            {"icon": "fas fa-check-circle", "title": "All Skin Types", "desc": "Customized for individual skin needs"},
+            {"icon": "fas fa-heart", "title": "Relaxing Experience", "desc": "Pampering massage and luxurious treatment"}
+        ],
+        "related": [
+            {"title": "Skin Glow: Hydrofacial", "price": "£99", "duration": "45 mins", "href": "hydrofacial.html"},
+            {"title": "Skin Oxyglow: OxygenO Facial", "price": "£89", "duration": "45 mins", "href": "oxygeno-facial.html"},
+            {"title": "Skin Radiance: BioRePeel", "price": "£99", "duration": "45 mins", "href": "biorepeel.html"}
+        ]
+    },
+    "oxygeno-facial.html": {
+        "title": "Skin Oxyglow: OxygenO Facial",
+        "tagline": "Oxygen infusion for instant glow and deep cellular rejuvenation",
+        "price": "£89",
+        "duration": "45 minutes",
+        "description": "The OxygenO Facial infuses pressurized oxygen and premium serums into the skin, delivering instant radiance and deep hydration without irritation.",
+        "about_paragraphs": [
+            "The OxygenO Facial is a cutting-edge treatment that harnesses the power of pressurized oxygen to infuse premium serums and actives deep into the skin. This non-invasive technique boosts cellular oxygen levels for immediate visible results.",
+            "Using advanced oxygen technology, the treatment delivers intensive hydration, brightening, and rejuvenation without any downtime or irritation, making it perfect for all skin types.",
+            "The pressurized oxygen increases blood circulation, enhances product absorption, and stimulates collagen production, resulting in plump, glowing, and youthful-looking skin."
+        ],
+        "benefits": [
+            {"icon": "fas fa-bolt", "title": "Instant Glow", "desc": "Visible radiance and brightness immediately"},
+            {"icon": "fas fa-droplet", "title": "Deep Hydration", "desc": "Intensive moisture infusion at cellular level"},
+            {"icon": "fas fa-wind", "title": "Oxygen Boost", "desc": "Increased cellular oxygenation for vitality"},
+            {"icon": "fas fa-leaf", "title": "Non-Irritating", "desc": "Gentle on even the most sensitive skin"},
+            {"icon": "fas fa-redo", "title": "Collagen Stimulation", "desc": "Promotes natural skin firmness and elasticity"},
+            {"icon": "fas fa-zap", "title": "Serum Infusion", "desc": "Premium serums penetrate deeply"}
+        ],
+        "related": [
+            {"title": "Skin Glow: Hydrofacial", "price": "£99", "duration": "45 mins", "href": "hydrofacial.html"},
+            {"title": "Skin Glass: Korean Facial", "price": "£99", "duration": "60 mins", "href": "korean-facial.html"},
+            {"title": "Skin Radiance: BioRePeel", "price": "£99", "duration": "45 mins", "href": "biorepeel.html"}
+        ]
+    },
+    "biorepeel.html": {
+        "title": "Skin Radiance: BioRePeel",
+        "tagline": "Advanced biochemical peel for renewal and radiant transformation",
+        "price": "£99",
+        "duration": "45 minutes",
+        "description": "BioRePeel is an advanced chemical peel using bio-stimulating ingredients to safely resurface and rejuvenate skin with minimal downtime.",
+        "about_paragraphs": [
+            "BioRePeel is an innovative biochemical peel that combines advanced exfoliation with bio-stimulating ingredients. This treatment safely resurfaces the skin, promoting cell turnover and revealing a radiant, refined complexion.",
+            "Unlike aggressive chemical peels, BioRePeel uses a carefully formulated blend that gently dissolves dead skin cells while stimulating natural skin renewal processes and collagen production.",
+            "The treatment is customizable for different skin types and concerns, delivering visible results with minimal downtime - perfect for those seeking professional skin rejuvenation."
+        ],
+        "benefits": [
+            {"icon": "fas fa-redo-alt", "title": "Cell Renewal", "desc": "Accelerated skin cell turnover"},
+            {"icon": "fas fa-glow", "title": "Radiant Glow", "desc": "Visible brightness and clarity"},
+            {"icon": "fas fa-wrench", "title": "Texture Refinement", "desc": "Smooths rough patches and uneven texture"},
+            {"icon": "fas fa-lines", "title": "Fine Line Reduction", "desc": "Minimizes aging signs and wrinkles"},
+            {"icon": "fas fa-palette", "title": "Even Tone", "desc": "Reduces hyperpigmentation and dark spots"},
+            {"icon": "fas fa-clock", "title": "Minimal Downtime", "desc": "Quick recovery compared to traditional peels"}
+        ],
+        "related": [
+            {"title": "Skin Glow: Hydrofacial", "price": "£99", "duration": "45 mins", "href": "hydrofacial.html"},
+            {"title": "Green Peel – BioMicroneedling", "price": "£89", "duration": "45 mins", "href": "biomicroneedling.html"},
+            {"title": "Skin Renewal: Chemical Peel", "price": "£99", "duration": "45 mins", "href": "chemical-peel.html"}
+        ]
+    },
+    "biomicroneedling.html": {
+        "title": "Green Peel – BioMicroneedling",
+        "tagline": "Herbal microneedling for natural skin renewal and rejuvenation",
+        "price": "£89",
+        "duration": "45 minutes",
+        "description": "Combining herbal extraction with microneedling technology, this treatment stimulates collagen production and promotes natural skin healing.",
+        "about_paragraphs": [
+            "BioMicroneedling combines the Green Peel herbal extraction method with modern microneedling technology. This unique fusion creates controlled micro-injuries that trigger the skin's natural healing response.",
+            "The treatment uses natural plant-based active ingredients alongside microneedling to stimulate deep collagen and elastin production, resulting in firmer, more youthful skin.",
+            "Perfect for addressing aging concerns, texture issues, and overall skin rejuvenation with a more natural approach that harnesses the body's inherent healing abilities."
+        ],
+        "benefits": [
+            {"icon": "fas fa-leaf", "title": "Natural Herbal Power", "desc": "Green Peel botanical extracts"},
+            {"icon": "fas fa-arrows", "title": "Collagen Stimulation", "desc": "Deep structural improvement"},
+            {"icon": "fas fa-dumbbell", "title": "Firmness", "desc": "Enhanced skin elasticity and support"},
+            {"icon": "fas fa-sparkles", "title": "Radiance", "desc": "Improved glow and skin quality"},
+            {"icon": "fas fa-scars", "title": "Scar Improvement", "desc": "Reduces appearance of scars and marks"},
+            {"icon": "fas fa-shield-alt", "title": "Natural Healing", "desc": "Supports body's own repair mechanisms"}
+        ],
+        "related": [
+            {"title": "Skin Radiance: BioRePeel", "price": "£99", "duration": "45 mins", "href": "biorepeel.html"},
+            {"title": "Skin Renewal: Chemical Peel", "price": "£99", "duration": "45 mins", "href": "chemical-peel.html"},
+            {"title": "Skin Revive: Microneedling + BioRePeel", "price": "£149", "duration": "60 mins", "href": "microneedling-biorepeel.html"}
+        ]
+    },
+    "chemical-peel.html": {
+        "title": "Skin Renewal: Chemical Peel",
+        "tagline": "Professional chemical peel for dramatic skin transformation",
+        "price": "£99",
+        "duration": "45 minutes",
+        "description": "A customizable chemical peel treatment using professional-grade acids to resurface the skin and reveal a brighter, clearer complexion.",
+        "about_paragraphs": [
+            "Our Chemical Peel is a professional treatment using carefully selected acids to dissolve the bonds between dead skin cells, promoting controlled exfoliation and renewal.",
+            "We offer customizable peel strengths - from gentle superficial peels to deeper medium peels - tailored to your skin type and concerns. Each treatment is designed to deliver visible results with manageable downtime.",
+            "Chemical peels are highly effective for addressing acne, hyperpigmentation, fine lines, and overall skin texture, revealing fresh, radiant skin beneath."
+        ],
+        "benefits": [
+            {"icon": "fas fa-water-droplet", "title": "Deep Exfoliation", "desc": "Professional-grade chemical resurfacing"},
+            {"icon": "fas fa-zap", "title": "Fast Results", "desc": "Visible improvement in 24-48 hours"},
+            {"icon": "fas fa-palette", "title": "Brightening", "desc": "Even skin tone and radiance"},
+            {"icon": "fas fa-acne", "title": "Acne Control", "desc": "Clears congestion and prevents breakouts"},
+            {"icon": "fas fa-lines", "title": "Anti-Aging", "desc": "Reduces fine lines and wrinkles"},
+            {"icon": "fas fa-customize", "title": "Customizable", "desc": "Strength adjusted for your skin"}
+        ],
+        "related": [
+            {"title": "Skin Radiance: BioRePeel", "price": "£99", "duration": "45 mins", "href": "biorepeel.html"},
+            {"title": "Green Peel – BioMicroneedling", "price": "£89", "duration": "45 mins", "href": "biomicroneedling.html"},
+            {"title": "Skin Revive: Microneedling + BioRePeel", "price": "£149", "duration": "60 mins", "href": "microneedling-biorepeel.html"}
+        ]
+    },
+    "microneedling-biorepeel.html": {
+        "title": "Skin Revive: Microneedling + BioRePeel",
+        "tagline": "Dual-action treatment for maximum skin transformation",
+        "price": "£149",
+        "duration": "60 minutes",
+        "description": "Combining microneedling with BioRePeel for intensive collagen stimulation and cellular renewal in one powerful treatment.",
+        "about_paragraphs": [
+            "This innovative combination treatment merges the collagen-stimulating power of microneedling with the cell-renewing benefits of BioRePeel for synergistic results.",
+            "The dual-action approach targets multiple layers of skin simultaneously - the microneedling stimulates deep structural changes while the chemical peel promotes surface cell turnover.",
+            "This powerful combination delivers faster, more dramatic results compared to either treatment alone, making it ideal for those seeking intensive skin transformation and rejuvenation."
+        ],
+        "benefits": [
+            {"icon": "fas fa-rocket", "title": "Maximum Results", "desc": "Dual-action for powerful transformation"},
+            {"icon": "fas fa-arrows", "title": "Deep Collagen", "desc": "Intensive structural rebuilding"},
+            {"icon": "fas fa-redo-alt", "title": "Surface Renewal", "desc": "Cell turnover and exfoliation"},
+            {"icon": "fas fa-dumbbell", "title": "Firmness & Lift", "desc": "Enhanced elasticity and support"},
+            {"icon": "fas fa-sparkles", "title": "Radiant Glow", "desc": "Luminous, refreshed appearance"},
+            {"icon": "fas fa-fast-forward", "title": "Faster Results", "desc": "Accelerated skin transformation"}
+        ],
+        "related": [
+            {"title": "Skin Radiance: BioRePeel", "price": "£99", "duration": "45 mins", "href": "biorepeel.html"},
+            {"title": "Green Peel – BioMicroneedling", "price": "£89", "duration": "45 mins", "href": "biomicroneedling.html"},
+            {"title": "Skin LumaLift: Radio Frequency Facial", "price": "£129", "duration": "60 mins", "href": "rf-facial.html"}
+        ]
+    },
+    "rf-facial.html": {
+        "title": "Skin LumaLift: Radio Frequency Facial",
+        "tagline": "Advanced RF technology for non-invasive skin tightening and rejuvenation",
+        "price": "£129",
+        "duration": "60 minutes",
+        "description": "Radio Frequency facial uses advanced energy-based technology to stimulate collagen production, tighten skin, and deliver dramatic lifting effects.",
+        "about_paragraphs": [
+            "The Radio Frequency Facial harnesses advanced RF energy to heat deep layers of skin, triggering collagen remodeling and skin tightening without invasive procedures.",
+            "This non-invasive treatment delivers dramatic lifting and firming results comparable to more invasive procedures, with minimal downtime and immediate visible improvement.",
+            "RF technology is particularly effective for addressing sagging skin, loss of firmness, and overall facial rejuvenation, with cumulative improvements over multiple sessions."
+        ],
+        "benefits": [
+            {"icon": "fas fa-arrow-up", "title": "Lifting Effect", "desc": "Non-invasive facial tightening"},
+            {"icon": "fas fa-dumbbell", "title": "Firmness", "desc": "Enhanced skin elasticity and support"},
+            {"icon": "fas fa-arrows", "title": "Collagen Remodeling", "desc": "Deep structural improvement"},
+            {"icon": "fas fa-clock", "title": "No Downtime", "desc": "Return to activities immediately"},
+            {"icon": "fas fa-check-circle", "title": "Visible Results", "desc": "Improvement seen after first session"},
+            {"icon": "fas fa-trending-up", "title": "Cumulative Gains", "desc": "Better results with repeated treatments"}
+        ],
+        "related": [
+            {"title": "Skin Revive: Microneedling + BioRePeel", "price": "£149", "duration": "60 mins", "href": "microneedling-biorepeel.html"},
+            {"title": "Skin Luxe Satin: Ultimate Exfoliation", "price": "£99", "duration": "45 mins", "href": "ultimate-exfoliation.html"},
+            {"title": "Skin Radiance: BioRePeel", "price": "£99", "duration": "45 mins", "href": "biorepeel.html"}
+        ]
+    },
+    "ultimate-exfoliation.html": {
+        "title": "Skin Luxe Satin: Ultimate Exfoliation",
+        "tagline": "Triple-exfoliation facial for ultimate smoothness and radiance",
+        "price": "£99",
+        "duration": "45 minutes",
+        "description": "Combining three complementary exfoliation methods in one luxurious treatment for unparalleled skin refinement and glow.",
+        "about_paragraphs": [
+            "The Ultimate Exfoliation combines physical exfoliation, enzyme exfoliation, and chemical exfoliation in one comprehensive treatment, targeting multiple layers of dead skin.",
+            "This triple-action approach delivers superior results compared to single-method treatments, revealing ultra-smooth, luminous skin that feels like silk.",
+            "Perfect for those seeking the ultimate in skin refinement and radiance, with customizable intensity based on your skin type and sensitivity."
+        ],
+        "benefits": [
+            {"icon": "fas fa-gem", "title": "Silky Smooth", "desc": "Ultra-refined skin texture"},
+            {"icon": "fas fa-sparkles", "title": "Maximum Glow", "desc": "Luminous, radiant complexion"},
+            {"icon": "fas fa-water-droplet", "title": "Deep Cleanse", "desc": "Thoroughly purified pores"},
+            {"icon": "fas fa-palette", "title": "Even Tone", "desc": "Unified, clarified skin color"},
+            {"icon": "fas fa-check-circle", "title": "Instant Results", "desc": "Visible improvement immediately"},
+            {"icon": "fas fa-heart", "title": "Pampering", "desc": "Luxurious, indulgent experience"}
+        ],
+        "related": [
+            {"title": "Skin Glow: Hydrofacial", "price": "£99", "duration": "45 mins", "href": "hydrofacial.html"},
+            {"title": "Skin Radiance: BioRePeel", "price": "£99", "duration": "45 mins", "href": "biorepeel.html"},
+            {"title": "Skin LumaLift: Radio Frequency Facial", "price": "£129", "duration": "60 mins", "href": "rf-facial.html"}
+        ]
+    },
+    "blackhead-extraction.html": {
+        "title": "Deep Blackhead Extraction",
+        "tagline": "Professional deep-pore extraction for clear, refined skin",
+        "price": "£79",
+        "duration": "45 minutes",
+        "description": "Intensive professional blackhead removal and pore refinement treatment using specialized techniques and technology.",
+        "about_paragraphs": [
+            "Our Deep Blackhead Extraction treatment uses professional-grade techniques to safely and effectively remove stubborn blackheads, congestion, and build-up from pores.",
+            "We combine steam softening, gentle extraction, and pore-minimizing treatments to clear congestion while maintaining skin health and comfort.",
+            "This specialized treatment is ideal for congestion-prone and oily skin types, delivering a noticeably clearer, refined complexion with refined-looking pores."
+        ],
+        "benefits": [
+            {"icon": "fas fa-wind", "title": "Deep Pore Cleaning", "desc": "Professional extraction of congestion"},
+            {"icon": "fas fa-eye", "title": "Visible Results", "desc": "Dramatically clearer skin"},
+            {"icon": "fas fa-compress", "title": "Pore Minimizing", "desc": "Refined pore appearance"},
+            {"icon": "fas fa-droplet", "title": "Purified", "desc": "Thoroughly cleansed skin"},
+            {"icon": "fas fa-shield-alt", "title": "Gentle Methods", "desc": "Safe, professional extraction"},
+            {"icon": "fas fa-clock", "title": "Rapid Recovery", "desc": "Minimal irritation or redness"}
+        ],
+        "related": [
+            {"title": "Skin Glow: Hydrofacial", "price": "£99", "duration": "45 mins", "href": "hydrofacial.html"},
+            {"title": "Skin Renewal: Chemical Peel", "price": "£99", "duration": "45 mins", "href": "chemical-peel.html"},
+            {"title": "Skin Radiance: BioRePeel", "price": "£99", "duration": "45 mins", "href": "biorepeel.html"}
+        ]
+    },
+    "bb-glow.html": {
+        "title": "Skin Balance: BB Glow",
+        "tagline": "Semi-permanent tinted coverage with skincare benefits",
+        "price": "£125",
+        "duration": "60 minutes",
+        "description": "BB Glow is an innovative semi-permanent makeup treatment combining skincare benefits with customizable tinted coverage for natural, flawless results.",
+        "about_paragraphs": [
+            "BB Glow is a revolutionary treatment that micro-tattooes customized tinted serum into the top layers of skin, creating a natural, buildable coverage that looks like your skin but better.",
+            "Unlike traditional cosmetics, BB Glow combines beauty with skincare - the specialized serums nourish the skin while creating an even, glowing complexion that lasts 6-12 months.",
+            "The treatment is completely customizable to your skin tone and coverage preference, delivering natural, seamless results that fade gradually without harsh lines."
+        ],
+        "benefits": [
+            {"icon": "fas fa-palette", "title": "Customizable Color", "desc": "Matched perfectly to your tone"},
+            {"icon": "fas fa-sparkles", "title": "Natural Glow", "desc": "Seamless, second-skin finish"},
+            {"icon": "fas fa-droplet", "title": "Skincare Benefits", "desc": "Nourishing serums infused"},
+            {"icon": "fas fa-calendar-alt", "title": "Long-Lasting", "desc": "6-12 months of wear"},
+            {"icon": "fas fa-eye", "title": "Buildable", "desc": "Customize coverage as you wish"},
+            {"icon": "fas fa-clock", "title": "Time-Saving", "desc": "No daily makeup needed"}
+        ],
+        "related": [
+            {"title": "Skin Glass: Korean Facial", "price": "£99", "duration": "60 mins", "href": "korean-facial.html"},
+            {"title": "Skin Glow: Hydrofacial", "price": "£99", "duration": "45 mins", "href": "hydrofacial.html"},
+            {"title": "Skin LumaLift: Radio Frequency Facial", "price": "£129", "duration": "60 mins", "href": "rf-facial.html"}
+        ]
+    },
+
+    "hifu-face.html": {
+        "title": "HIFU Face",
+        "tagline": "Four-tech non-surgical lift for cheeks and mid-face",
+        "meta_description": "HIFU Face at Mili Skin & Beauty — lifts cheeks, sculpts jawline, and restores firmness with HIFU, MPT, MFU, and EMS.",
+        "about_paragraphs": [
+            "HIFU Face combines four technologies — HIFU, MPT, MFU, and EMS — to lift sagging tissue, restore cheek volume, and sculpt the lower face without surgery.",
+            "Focused energy reaches deep layers to stimulate collagen and elastin, softening nasolabial folds and improving overall facial firmness with minimal downtime.",
+            "The result is a naturally lifted, sculpted, and rejuvenated look with improved contour and long-lasting tightness."
+        ],
+        "benefits": [
+            {"icon": "fas fa-arrow-up", "title": "Complete Face Lift", "desc": "Lifts cheeks and softens nasolabial folds"},
+            {"icon": "fas fa-chess-queen", "title": "Jawline Sculpting", "desc": "Sharpens jawline and reduces jowls"},
+            {"icon": "fas fa-heart-pulse", "title": "Collagen Boost", "desc": "Stimulates collagen and elastin for lasting firmness"},
+            {"icon": "fas fa-face-smile", "title": "Anti-Sagging", "desc": "Tightens lax skin for a younger profile"},
+            {"icon": "fas fa-droplet", "title": "Radiance & Hydration", "desc": "Hydrates and nourishes for a healthy glow"},
+            {"icon": "fas fa-wand-magic-sparkles", "title": "Non-Surgical", "desc": "Lift and contour with minimal downtime"}
+        ]
+    },
+
+    "hifu-neck.html": {
+        "title": "HIFU Neck",
+        "tagline": "Non-surgical neck lift and jawline refinement",
+        "meta_description": "HIFU Neck at Mili Skin & Beauty — tightens loose neck skin, refines jawline, and smooths lines using HIFU, MPT, MFU, and EMS.",
+        "about_paragraphs": [
+            "HIFU Neck targets the neck and jawline with HIFU, MPT, MFU, and EMS to firm lax skin, reduce banding, and refine contours without surgery.",
+            "Energy is mapped to sagging zones to stimulate collagen and elastin, smoothing crepey skin and restoring a tighter neckline.",
+            "Expect a sleeker neck profile, improved jaw definition, and long-lasting firmness with minimal downtime."
+        ],
+        "benefits": [
+            {"icon": "fas fa-arrow-up", "title": "Neck Lift", "desc": "Tightens and firms loose neck skin"},
+            {"icon": "fas fa-lines-leaning", "title": "Line Softening", "desc": "Smooths horizontal lines and bands"},
+            {"icon": "fas fa-chess-queen", "title": "Jaw Definition", "desc": "Refines jawline for a sharper edge"},
+            {"icon": "fas fa-heart-pulse", "title": "Collagen Renewal", "desc": "Boosts collagen for lasting firmness"},
+            {"icon": "fas fa-water", "title": "Hydrated Finish", "desc": "Hydrates and nourishes post-treatment"},
+            {"icon": "fas fa-wand-magic-sparkles", "title": "No Downtime", "desc": "Lift and tighten without surgery"}
+        ]
+    },
+
+    "hifu-face-neck.html": {
+        "title": "HIFU Face & Neck",
+        "tagline": "Complete lift for face and neck without surgery",
+        "meta_description": "HIFU Face & Neck at Mili Skin & Beauty — comprehensive lift, contour, and tightening for face and neck using HIFU, MPT, MFU, and EMS.",
+        "about_paragraphs": [
+            "This combined treatment maps HIFU, MPT, MFU, and EMS across the face and neck to lift cheeks, define the jawline, and tighten neck skin in one session.",
+            "Energy is tailored to deep and superficial layers to boost collagen, improve elasticity, and restore youthful contours front to back.",
+            "Ideal for clients seeking maximum lift, contour, and anti-sagging results with minimal downtime."
+        ],
+        "benefits": [
+            {"icon": "fas fa-arrow-up", "title": "Full Lift", "desc": "Lifts cheeks, jawline, and neck together"},
+            {"icon": "fas fa-chess-queen", "title": "Jawline Sculpt", "desc": "Sharper, more defined jaw contour"},
+            {"icon": "fas fa-face-smile", "title": "Anti-Sagging", "desc": "Targets jowls and neck laxity"},
+            {"icon": "fas fa-heart-pulse", "title": "Collagen & Elastin", "desc": "Deep stimulation for lasting firmness"},
+            {"icon": "fas fa-sun", "title": "Radiance", "desc": "Hydrates and brightens skin quality"},
+            {"icon": "fas fa-wand-magic-sparkles", "title": "Non-Surgical", "desc": "Dramatic lift with minimal downtime"}
+        ]
+    },
+
+    "hifu-jawline.html": {
+        "title": "HIFU Jawline",
+        "tagline": "Sharper jawline and lower-face contouring",
+        "meta_description": "HIFU Jawline at Mili Skin & Beauty — sculpts and tightens the jawline and jowls with HIFU, MPT, MFU, and EMS.",
+        "about_paragraphs": [
+            "HIFU Jawline focuses energy along the jaw and lower face to reduce jowls, tighten skin, and create a sharper profile without surgery.",
+            "Multi-depth delivery with HIFU, MPT, MFU, and EMS stimulates collagen and tones underlying muscles for clean, defined contours.",
+            "Results include a chiseled jawline, reduced sagging, and improved lower-face firmness with minimal downtime."
+        ],
+        "benefits": [
+            {"icon": "fas fa-chess-queen", "title": "Jaw Definition", "desc": "Sculpts and sharpens jaw contours"},
+            {"icon": "fas fa-arrow-up", "title": "Jowl Lift", "desc": "Reduces sagging along the jawline"},
+            {"icon": "fas fa-heart-pulse", "title": "Collagen Boost", "desc": "Firms skin for long-term definition"},
+            {"icon": "fas fa-face-smile", "title": "Youthful Profile", "desc": "Refines lower-face silhouette"},
+            {"icon": "fas fa-droplet", "title": "Smooth Finish", "desc": "Hydrates and nourishes skin"},
+            {"icon": "fas fa-wand-magic-sparkles", "title": "No Downtime", "desc": "Non-surgical sculpting"}
+        ]
+    },
+
+    "hifu-butt-lift.html": {
+        "title": "HIFU Butt Lift",
+        "tagline": "Lift, sculpt, and firm the buttocks",
+        "meta_description": "HIFU Butt Lift at Mili Skin & Beauty — non-surgical lift, contour, and firmness for the buttocks using HIFU, MPT, MFU, and EMS.",
+        "about_paragraphs": [
+            "This treatment combines HIFU, MPT, MFU, and EMS to lift and sculpt the buttocks, enhancing shape and firmness without surgery.",
+            "Focused energy remodels tissue and tones underlying muscles to elevate curves and reduce sagging.",
+            "Hydrating serums and massage finish the session, leaving the area smoother, firmer, and visibly lifted."
+        ],
+        "benefits": [
+            {"icon": "fas fa-arrow-trend-up", "title": "Lifted Curves", "desc": "Raises and shapes the buttocks"},
+            {"icon": "fas fa-hand-rock", "title": "Firmness", "desc": "Tightens lax tissue for a toned look"},
+            {"icon": "fas fa-heart-pulse", "title": "Collagen & Elastin", "desc": "Stimulates long-term firmness"},
+            {"icon": "fas fa-wave-square", "title": "Muscle Tone", "desc": "EMS tones underlying glute muscles"},
+            {"icon": "fas fa-droplet", "title": "Smooth Skin", "desc": "Hydrates for soft, supple finish"},
+            {"icon": "fas fa-wand-magic-sparkles", "title": "Non-Surgical", "desc": "Lift without downtime"}
+        ]
+    },
+
+    "hifu-breast-lift.html": {
+        "title": "HIFU Breast Lift",
+        "tagline": "Non-surgical lift for firmer, youthful breasts",
+        "meta_description": "HIFU Breast Lift at Mili Skin & Beauty — lifts and firms breast tissue using HIFU, MPT, MFU, and EMS with minimal downtime.",
+        "about_paragraphs": [
+            "HIFU Breast Lift uses HIFU, MPT, MFU, and EMS to tighten and elevate breast tissue without surgery.",
+            "Energy is mapped to restore firmness, improve contour, and support natural shape.",
+            "A hydrating finish soothes the area, leaving the chest lifted, smoothed, and refreshed."
+        ],
+        "benefits": [
+            {"icon": "fas fa-arrow-up", "title": "Lift & Shape", "desc": "Elevates and refines breast contour"},
+            {"icon": "fas fa-hand-holding-heart", "title": "Firmness", "desc": "Tightens lax tissue for support"},
+            {"icon": "fas fa-heart-pulse", "title": "Collagen Stimulation", "desc": "Boosts firmness over time"},
+            {"icon": "fas fa-wave-square", "title": "Muscle Tone", "desc": "EMS engagement for subtle lift"},
+            {"icon": "fas fa-droplet", "title": "Hydrated Skin", "desc": "Nourishes for smooth feel"},
+            {"icon": "fas fa-wand-magic-sparkles", "title": "Minimal Downtime", "desc": "Non-surgical rejuvenation"}
+        ]
+    },
+
+    "hifu-stomach.html": {
+        "title": "HIFU Stomach",
+        "tagline": "Tighten and contour the abdomen without surgery",
+        "meta_description": "HIFU Stomach at Mili Skin & Beauty — firms abdominal skin, reduces laxity, and contours the midsection using HIFU, MPT, MFU, and EMS.",
+        "about_paragraphs": [
+            "HIFU Stomach combines HIFU, MPT, MFU, and EMS to tighten loose abdominal skin and refine the midsection without invasive procedures.",
+            "Multi-depth energy boosts collagen, firms tissue, and tones underlying muscles for a smoother profile.",
+            "Ideal for clients wanting a flatter, more defined stomach with minimal downtime."
+        ],
+        "benefits": [
+            {"icon": "fas fa-border-all", "title": "Abdominal Tightening", "desc": "Firms lax skin for a flatter look"},
+            {"icon": "fas fa-arrow-right-to-city", "title": "Waist Contour", "desc": "Refines midsection shape"},
+            {"icon": "fas fa-heart-pulse", "title": "Collagen & Elastin", "desc": "Supports long-term firmness"},
+            {"icon": "fas fa-wave-square", "title": "Muscle Tone", "desc": "EMS engagement for core support"},
+            {"icon": "fas fa-droplet", "title": "Smooth Finish", "desc": "Hydrates for soft, even skin"},
+            {"icon": "fas fa-wand-magic-sparkles", "title": "Non-Surgical", "desc": "Visible contour with little downtime"}
+        ]
+    },
+
+    "hifu-love-handles.html": {
+        "title": "HIFU Love Handles",
+        "tagline": "Reduce side fat and sculpt the waistline",
+        "meta_description": "HIFU Love Handles at Mili Skin & Beauty — targets stubborn side fat and tightens waistline skin using HIFU, MPT, MFU, and EMS.",
+        "about_paragraphs": [
+            "HIFU Love Handles focuses four technologies on the waistline to reduce stubborn side fat and tighten skin for a sleeker silhouette.",
+            "Energy delivery boosts collagen and firms tissue while EMS tones underlying muscles for better definition.",
+            "Expect a more contoured waist with smoother skin and minimal downtime."
+        ],
+        "benefits": [
+            {"icon": "fas fa-grip-lines-vertical", "title": "Love Handle Reduction", "desc": "Targets stubborn side fat"},
+            {"icon": "fas fa-arrow-right-to-city", "title": "Waist Sculpt", "desc": "Refines and slims the waistline"},
+            {"icon": "fas fa-heart-pulse", "title": "Collagen Support", "desc": "Firms skin for lasting smoothness"},
+            {"icon": "fas fa-wave-square", "title": "Muscle Tone", "desc": "EMS engagement for definition"},
+            {"icon": "fas fa-droplet", "title": "Hydration", "desc": "Nourishes skin for a soft finish"},
+            {"icon": "fas fa-wand-magic-sparkles", "title": "Minimal Downtime", "desc": "Non-surgical contouring"}
+        ]
+    },
+
+    "hifu-stomach-love-handles.html": {
+        "title": "HIFU Stomach + Love Handles",
+        "tagline": "Comprehensive midsection lift and contour",
+        "meta_description": "HIFU Stomach + Love Handles at Mili Skin & Beauty — combined abdominal tightening and waist sculpting with HIFU, MPT, MFU, and EMS.",
+        "about_paragraphs": [
+            "This combined session maps HIFU, MPT, MFU, and EMS across the stomach and waist to tighten skin, reduce side bulges, and sculpt the midsection.",
+            "Deep and superficial energy delivery boosts collagen, improves elasticity, and tones muscles for balanced definition.",
+            "Designed for clients wanting maximal lift and contour around the core with minimal downtime."
+        ],
+        "benefits": [
+            {"icon": "fas fa-border-all", "title": "Abdominal Tightening", "desc": "Firms and smooths the stomach"},
+            {"icon": "fas fa-grip-lines-vertical", "title": "Love Handle Reduction", "desc": "Refines side contours"},
+            {"icon": "fas fa-arrow-right-to-city", "title": "Waist Definition", "desc": "Sculpts a balanced midsection"},
+            {"icon": "fas fa-heart-pulse", "title": "Collagen & Elastin", "desc": "Supports long-term firmness"},
+            {"icon": "fas fa-wave-square", "title": "Muscle Tone", "desc": "EMS engagement for core support"},
+            {"icon": "fas fa-wand-magic-sparkles", "title": "Non-Surgical", "desc": "Comprehensive contour with little downtime"}
+        ]
+    },
+
+    "hifu-arms.html": {
+        "title": "HIFU Arms",
+        "tagline": "Tighten bingo wings and tone upper arms",
+        "meta_description": "HIFU Arms at Mili Skin & Beauty — reduces bingo wings, lifts, and tones upper arms using HIFU, MPT, MFU, and EMS.",
+        "about_paragraphs": [
+            "HIFU Arms targets the upper arms with HIFU, MPT, MFU, and EMS to reduce bingo wings and firm sagging tissue.",
+            "Energy mapping stimulates collagen and tones underlying muscles for sleeker arm contours.",
+            "Hydrating finish leaves skin smooth, lifted, and visibly tightened with minimal downtime."
+        ],
+        "benefits": [
+            {"icon": "fas fa-arrow-up", "title": "Arm Lift", "desc": "Firms and lifts upper arms"},
+            {"icon": "fas fa-align-justify", "title": "Bingo Wing Reduction", "desc": "Targets sagging under-arm skin"},
+            {"icon": "fas fa-wave-square", "title": "Muscle Tone", "desc": "EMS engagement for definition"},
+            {"icon": "fas fa-heart-pulse", "title": "Collagen Boost", "desc": "Supports long-term firmness"},
+            {"icon": "fas fa-droplet", "title": "Hydration", "desc": "Nourishes and smooths skin"},
+            {"icon": "fas fa-wand-magic-sparkles", "title": "Minimal Downtime", "desc": "Non-surgical tightening"}
+        ]
+    },
+
+    "hifu-inner-thighs.html": {
+        "title": "HIFU Inner Thighs",
+        "tagline": "Tighten and smooth inner thighs",
+        "meta_description": "HIFU Inner Thighs at Mili Skin & Beauty — lifts, tones, and smooths inner thighs using HIFU, MPT, MFU, and EMS.",
+        "about_paragraphs": [
+            "HIFU Inner Thighs uses four technologies to lift and tighten inner thigh skin, reducing sagging and improving texture without surgery.",
+            "Collagen stimulation and muscle engagement create smoother, more defined inner thighs.",
+            "A hydrating finish boosts softness and elasticity with minimal downtime."
+        ],
+        "benefits": [
+            {"icon": "fas fa-arrow-up", "title": "Inner Thigh Lift", "desc": "Firms and tightens sagging skin"},
+            {"icon": "fas fa-shoe-prints", "title": "Contour", "desc": "Improves inner thigh definition"},
+            {"icon": "fas fa-heart-pulse", "title": "Collagen Support", "desc": "Long-term firmness and elasticity"},
+            {"icon": "fas fa-wave-square", "title": "Muscle Tone", "desc": "EMS engagement for shaping"},
+            {"icon": "fas fa-droplet", "title": "Smoothness", "desc": "Hydrates for supple skin"},
+            {"icon": "fas fa-wand-magic-sparkles", "title": "Non-Surgical", "desc": "Lift and tone with little downtime"}
+        ]
+    },
+
+    "hifu-outer-thighs.html": {
+        "title": "HIFU Outer Thighs",
+        "tagline": "Firm and contour outer thighs",
+        "meta_description": "HIFU Outer Thighs at Mili Skin & Beauty — firms, lifts, and smooths outer thighs using HIFU, MPT, MFU, and EMS.",
+        "about_paragraphs": [
+            "HIFU Outer Thighs targets outer thigh laxity and uneven texture with multi-depth energy to lift and smooth the area.",
+            "Collagen stimulation and EMS work together to firm tissue and refine the thigh silhouette.",
+            "Skin is left tighter, toned, and hydrated with minimal downtime."
+        ],
+        "benefits": [
+            {"icon": "fas fa-arrow-up", "title": "Outer Thigh Lift", "desc": "Firms and lifts outer thighs"},
+            {"icon": "fas fa-shoe-prints", "title": "Contour", "desc": "Smooths and shapes thigh line"},
+            {"icon": "fas fa-heart-pulse", "title": "Collagen Boost", "desc": "Supports lasting firmness"},
+            {"icon": "fas fa-wave-square", "title": "Muscle Tone", "desc": "EMS engagement for definition"},
+            {"icon": "fas fa-droplet", "title": "Hydration", "desc": "Soft, nourished finish"},
+            {"icon": "fas fa-wand-magic-sparkles", "title": "Non-Surgical", "desc": "Lift and smooth without downtime"}
+        ]
+    },
+
+    "hifu-banana-rolls.html": {
+        "title": "HIFU Banana Rolls",
+        "tagline": "Lift and smooth the under-glute area",
+        "meta_description": "HIFU Banana Rolls at Mili Skin & Beauty — tightens and lifts the under-buttock area using HIFU, MPT, MFU, and EMS.",
+        "about_paragraphs": [
+            "HIFU Banana Rolls targets the under-glute crease to lift and smooth the area without surgery.",
+            "Combined HIFU, MPT, MFU, and EMS firm tissue and tone muscles to refine the curve transition.",
+            "A hydrating finish keeps skin supple while lift and contour improve over time."
+        ],
+        "benefits": [
+            {"icon": "fas fa-arrow-trend-up", "title": "Under-Glute Lift", "desc": "Elevates the banana roll area"},
+            {"icon": "fas fa-hand-rock", "title": "Firmness", "desc": "Tightens lax tissue"},
+            {"icon": "fas fa-heart-pulse", "title": "Collagen Support", "desc": "Encourages lasting firmness"},
+            {"icon": "fas fa-wave-square", "title": "Muscle Tone", "desc": "EMS engagement for smooth transition"},
+            {"icon": "fas fa-droplet", "title": "Smooth Skin", "desc": "Hydrates for a soft finish"},
+            {"icon": "fas fa-wand-magic-sparkles", "title": "Minimal Downtime", "desc": "Non-surgical refinement"}
+        ]
+    }
+}
+
+print(f"Treatment page configuration loaded: {len(treatments)} pages to refactor")
+print("Ready to generate refactored HTML files")
+print("\nTreatments to refactor:")
+for filename in treatments.keys():
+    print(f"  - {filename}: {treatments[filename]['title']}")

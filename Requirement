@@ -1,0 +1,71 @@
+Create a modern, elegant, and responsive website for a skin care company called "Mili Skin & Beauty". The design should be clean, aesthetic, and luxurious, using a color palette inspired by earthy tones (brown, beige, white, and gold accents). Include the following sections:
+
+1. Header & Navigation:
+   - Logo: "Mili Skin & Beauty" (use the provided logo image).
+   - Navigation links: Home, About, Services, Price List, Contact.
+   - Instagram link: @mili.skin.beauty.
+
+2. Hero Section:
+   - Full-width banner with a tagline: "Glow Instantly, Repair Deeply – Your No-Downtime Skin Transformation."
+   - A "Book Now" button linked to the contact section.
+
+3. About Section:
+   - Brief company description: Mili Skin & Beauty specializes in advanced facials, skin rejuvenation, and non-invasive treatments located in Bethnal Green, London.
+   - Highlight benefits: Skin renewal, hydration, anti-aging, and collagen stimulation.
+
+4. Services Section:
+   - Two categories:
+     - Facials Treatments:
+       * Skin Glow: Hydrofacial – £99
+       * Green Peel: BioMicroneedling – £99
+       * Skin Radiance: BioRePeel – £99
+       * Skin Revive: Microneedling + BioRePeel – £149
+       * Skin Glass: Korean Facial – £99
+       * Skin Oxyglow: OxygenO Facial – £89
+       * Skin Renewal: Chemical Peel – £99
+       * Skin Luxe Satin: Ultimate Exfoliation – £79
+       * Skin Balance: BB Glow – £109
+       * Skin LumaLift: Radio Frequency Facial – £119
+       * Deep Blackhead Extraction – £45
+     - HIFU Skin Tightening:
+       * HIFU Face – £199
+       * HIFU Neck – £199
+       * HIFU Face & Neck – £299
+       * HIFU Jawline Definition – £99
+       * HIFU Butt Lift – £199
+       * HIFU Stomach Tightening – £199
+       * HIFU Love Handles – £149
+       * HIFU Stomach & Love Handles – £299
+       * HIFU Inner Thighs – £149
+       * HIFU Outer Thighs – £149
+       * HIFU Breast Lift – £199
+       * HIFU Banana Rolls – £149
+       * HIFU Arms – £199
+
+   - Each service should have a short description and benefits (hydration, anti-aging, collagen stimulation, skin renewal).
+
+5. Price List Section:
+   - Display all prices clearly in a stylish table or card layout.
+
+6. Contact Section:
+   - Location: Bethnal Green, London.
+   - Phone: 07346 001219.
+   - Email: aftabk200284@gmail.com.
+   - Instagram: @mili.skin.beauty.
+   - Contact form:
+     * Fields: Name, Email, Message.
+     * When submitted, send the message directly to aftabk200284@gmail.com using a backend solution (PHP mailer or Node.js email service).
+   - Include a Google Map embed for location.
+
+7. Footer:
+   - Social links, copyright notice, and quick navigation.
+
+Additional Requirements:
+- Fully responsive design (mobile-friendly).
+- Use modern fonts (Playfair Display for headings, Lato for body text).
+- Include smooth scrolling and hover animations.
+- Prepare placeholders for images (I will add actual pictures later).
+- Implement SEO-friendly structure and meta tags.
+- Add a "Book Now" button that scrolls to the contact form.
+
+Generate HTML, CSS, and JavaScript code for this website. Use semantic HTML5 and modern CSS (Flexbox/Grid). Optionally, use Bootstrap or Tailwind for styling.
